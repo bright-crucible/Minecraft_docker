@@ -1,0 +1,12 @@
+#!/bin/bash
+#./venv/bin/docker-compose run ov /overviewer/overviewer.sh
+./venv/bin/docker-compose exec -T ov /overviewer/overviewer.sh
+
+
+#rsync render to /var/www/html/overviewer
+#previous1:
+#rsync -a --stats --delete /home/stdt/mc_docker/render/ /var/www/html/overviewer/
+#copy context chcon -R --reference=/var/www /var/www/html/overviewer
+#su - -c "chcon -R --reference=/var/www /var/www/html/overviewer"
+#previous2:
+#chcon -R --reference=/var/www /var/www/html/overviewer

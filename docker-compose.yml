@@ -1,0 +1,48 @@
+version: '2.4'
+services:
+    mc:
+        build: mc
+        image: robothouse/mc
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/octoLand_minecraft:/minecraft
+            - $PWD/data/octoLand_world:/minecraft/octoLand
+            - $PWD/data/octoLand_backup:/minecraft/backup
+        ports:
+            - "25566:25565/tcp"
+    ov:
+        build: ov
+        image: robothouse/ov
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/octoLand_backup:/overviewer/octoLand
+            - $PWD/data/octoLand_render:/overviewer/render
+    nginx:
+        build: nginx
+        image: robothouse/nginx
+        restart: unless-stopped
+        ports:
+            - "443:8443"
+        volumes:
+            - $PWD/data/nginx:/var/www/html
+            - $PWD/data/letsencrypt:/etc/letsencrypt
+            - $PWD/data/octoLand_render:/var/www/html/octoLand
+    certbot:
+        build: certbot
+        image: robothouse/certbot
+        restart: unless-stopped
+        ports:
+            - "80:8080"
+        volumes:
+            - $PWD/data/letsencrypt:/etc/letsencrypt
+            - $PWD/data/certbot:/var/lib/letsencrypt
+    murmur:
+        build: murmur
+        image: robothouse/murmur
+        restart: unless-stopped
+        volumes:
+            - $PWD/data/murmur:/home/mumble
+            - $PWD/data/letsencrypt:/etc/letsencrypt
+        ports:
+            - "64738:64738/tcp"
+            - "64738:64738/udp"
