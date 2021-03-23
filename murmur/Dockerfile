@@ -1,5 +1,5 @@
 #FROM alpine:latest
-#ENV MURMUR_VER 1.2.19
+#ENV MURMUR_VER 1.3.4
 #ENV TZ America/Los_Angeles
 #RUN apk add --no-cache \
 #        tzdata \
@@ -22,25 +22,6 @@
 #WORKDIR /home/mumble
 #USER mumble
 #CMD ["/opt/mumble/murmur.x86", "-fg", "-ini", "/etc/murmur/murmur.ini"]
-
-#FROM alpine:3.9
-#ENV TZ America/Los_Angeles
-#RUN apk add --no-cache \
-#        murmur \
-#        icu-libs \
-#        tzdata \
-#    && mkdir -p \
-#        /etc/letsencrypt \
-#        /etc/murmur \
-#    && addgroup -S mumble -g 1000 \
-#    && adduser -s /sbin/nologin -u 1000 -S mumble -G mumble \
-#    && chown -R mumble:mumble \
-#        /etc/letsencrypt
-#COPY murmur.ini /etc/murmur
-#COPY lsb_release /usr/local/bin
-#WORKDIR /home/mumble
-#USER mumble
-#CMD ["/usr/bin/murmurd", "-fg", "-ini", "/etc/murmur/murmur.ini"]
 
 FROM alpine:latest
 ENV TZ America/Los_Angeles
