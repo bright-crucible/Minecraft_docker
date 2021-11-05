@@ -1,11 +1,13 @@
 FROM alpine:latest as mc
 ENV TZ America/Los_Angeles
 RUN apk add --no-cache \
-        openjdk11-jre-headless \
         tzdata \
         screen \
         rsync \
         xz \
+    && apk add --no-cache \
+        --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
+        openjdk17-jre-headless \
     && mkdir -p /minecraft \
     && addgroup -S mc -g 1000 \
     && adduser -u 1000 -S mc -G mc \
