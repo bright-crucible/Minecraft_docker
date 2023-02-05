@@ -18,7 +18,7 @@ RUN ln -snf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime \
     && python3 setup.py build \
     && mkdir octoLand render \
     && touch overviewer.log \
-    && wget -O client.jar https://overviewer.org/textures/1.18 \
+    && wget -O client.jar https://overviewer.org/textures/1.19 \
     && groupadd -g 1000 ov \
     && useradd -u 1000 -g 1000 ov \
     && chown -R 1000:1000 /overviewer
