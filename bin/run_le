@@ -1,9 +1,8 @@
 #!/bin/bash
 cd /home/paul/minecraft-alt/
 rm -f ./data/certbot/renewal
-#./venv/bin/docker-compose run -T certbot renew
-./venv/bin/docker-compose exec -T certbot certbot renew
+docker compose exec -T certbot certbot renew
 if [ -f ./data/certbot/renewal ]; then
-    ./venv/bin/docker-compose restart murmur
-    ./venv/bin/docker-compose restart nginx
+    docker compose restart murmur
+    docker compose restart nginx
 fi

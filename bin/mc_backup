@@ -1,2 +1,2 @@
 #!/bin/bash
-./venv/bin/docker-compose exec -T mc /minecraft/backup-new.sh
+docker compose exec -T mc /minecraft/backup-new.sh

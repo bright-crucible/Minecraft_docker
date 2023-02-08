@@ -1,2 +1,2 @@
 #!/bin/bash
-./venv/bin/docker-compose exec mc /bin/sh
+docker compose exec mc /bin/sh

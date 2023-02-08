@@ -1,6 +1,5 @@
 #!/bin/bash
-#./venv/bin/docker-compose run ov /overviewer/overviewer.sh
-./venv/bin/docker-compose exec -T ov /overviewer/overviewer.sh
+docker compose exec -T ov /overviewer/overviewer.sh
 
 
 #rsync render to /var/www/html/overviewer

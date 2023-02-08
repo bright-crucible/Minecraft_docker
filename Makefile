@@ -1,6 +1,4 @@
-.PHONY: backup build letsencrypt logs start stop status shell tail time ov venv
-
-COMPOSE="venv/bin/docker-compose"
+.PHONY: backup build letsencrypt logs start stop status shell tail time ov
 
 help:
 	@echo "Minecraft in a container!"
@@ -19,7 +17,6 @@ help:
 	@echo " tail        - tail the logs"
 	@echo " time        - print time in the MC server"
 	@echo " ov          - render overviewer"
-	@echo " venv        - first time use to setup virtual env"
 
 
 backup:
@@ -32,7 +29,7 @@ letsencrypt:
 	@bin/run_le
 
 logs:
-	@$(COMPOSE) logs
+	docker compose logs
 
 start:
 	@bin/start_mc
@@ -41,13 +38,13 @@ stop:
 	@bin/stop_mc
 
 status:
-	@$(COMPOSE) ps
+	docker compose ps
 
 shell:
 	@bin/mc_shell
 
 tail:
-	@$(COMPOSE) logs -f
+	docker compose logs -f
 
 time:
 	@bin/mc_time

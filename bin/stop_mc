@@ -1,5 +1,5 @@
 #!/bin/bash
-./venv/bin/docker-compose exec mc /bin/sh -c 'screen -p 0 -S minecraft -X stuff "stop\015"' && sleep 10
+docker compose exec mc /bin/sh -c 'screen -p 0 -S minecraft -X stuff "stop\015"' && sleep 10
 #docker-compose stop --timeout 30
 #docker-compose rm --force
-./venv/bin/docker-compose down --volumes --remove-orphans
+docker compose down --volumes --remove-orphans
