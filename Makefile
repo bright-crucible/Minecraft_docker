@@ -51,6 +51,3 @@ time:
 
 ov:
 	@bin/run_ov
-
-venv:
-	@bin/build_virtualenv

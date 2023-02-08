@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-DC=./venv/bin/docker-compose
-tmux new-session $DC logs -f certbot\; split-window $DC logs -f mc\; split-window $DC logs -f murmur\; split-window $DC logs -f nginx\; split-window $DC logs -f ov\; select-layout even-vertical
+tmux new-session docker compose logs -f certbot\; split-window docker compose logs -f mc\; split-window docker compose logs -f murmur\; split-window docker compose logs -f nginx\; split-window docker compose logs -f ov\; select-layout even-vertical
