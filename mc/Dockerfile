@@ -1,16 +1,17 @@
-FROM alpine:latest as mc
-ENV TZ America/Los_Angeles
-RUN apk add --no-cache \
-        tzdata \
+FROM debian:12
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime \
+    && apt-get update \
+    && apt-get -y install \
         screen \
         rsync \
-        xz \
-    && apk add --no-cache \
-        --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
-        openjdk17-jre-headless \
+        tzdata \
+        xz-utils \
+        openjdk-17-jdk \
+    && rm -rf /var/lib/apt/lists/* \
+    && groupadd -g 1000 mc \
+    && useradd -u 1000 -g 1000 -d /home/mc -m mc \
     && mkdir -p /minecraft \
-    && addgroup -S mc -g 1000 \
-    && adduser -u 1000 -S mc -G mc \
     && chown -R mc:mc /minecraft
 WORKDIR /minecraft
 COPY launch_mc.sh /usr/local/bin

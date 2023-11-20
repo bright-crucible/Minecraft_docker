@@ -10,13 +10,6 @@ services:
             - $PWD/data/octoLand_backup:/minecraft/backup
         ports:
             - "25566:25565/tcp"
-    ov:
-        build: ov
-        image: robothouse/ov
-        restart: unless-stopped
-        volumes:
-            - $PWD/data/octoLand_backup:/overviewer/octoLand
-            - $PWD/data/octoLand_render:/overviewer/render
     nginx:
         build: nginx
         image: robothouse/nginx
