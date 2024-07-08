@@ -16,9 +16,9 @@ services:
         ports:
             - "443:8443"
         volumes:
-            - $PWD/data/nginx:/var/www/html
+            - $PWD/data/nginx:/usr/share/nginx:ro
             - $PWD/data/letsencrypt:/etc/letsencrypt
-            - $PWD/data/octoLand_render:/var/www/html/octoLand
+            - $PWD/data/octoLand_render:/usr/share/nginx/html/octoLand:ro
     certbot:
         build: certbot
         image: robothouse/certbot
