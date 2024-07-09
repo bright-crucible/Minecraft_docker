@@ -17,7 +17,7 @@ services:
             - "443:8443"
         volumes:
             - $PWD/data/nginx:/usr/share/nginx:ro
-            - $PWD/data/letsencrypt:/etc/letsencrypt
+            - $PWD/data/letsencrypt:/etc/letsencrypt:ro
             - $PWD/data/octoLand_render:/usr/share/nginx/html/octoLand:ro
     certbot:
         build: certbot
@@ -34,7 +34,7 @@ services:
         restart: unless-stopped
         volumes:
             - $PWD/data/murmur:/home/mumble
-            - $PWD/data/letsencrypt:/etc/letsencrypt
+            - $PWD/data/letsencrypt:/etc/letsencrypt:ro
         ports:
             - "64738:64738/tcp"
             - "64738:64738/udp"
