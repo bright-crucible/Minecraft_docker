@@ -23,8 +23,6 @@ services:
         build: certbot
         image: robothouse/certbot
         restart: unless-stopped
-        ports:
-            - "80:8080"
         volumes:
             - $PWD/data/letsencrypt:/etc/letsencrypt
             - $PWD/data/certbot:/var/lib/letsencrypt
