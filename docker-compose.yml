@@ -14,7 +14,8 @@ services:
         image: robothouse/nginx
         restart: unless-stopped
         ports:
-            - "443:8443"
+            - "443:443/tcp"
+            - "443:443/udp"
         volumes:
             - $PWD/data/nginx:/usr/share/nginx:ro
             - $PWD/data/letsencrypt:/etc/letsencrypt:ro
